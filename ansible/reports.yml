@@ -1,0 +1,4 @@
+---
+- hosts: reports
+  roles:
+    - webserver
