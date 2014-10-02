@@ -1,14 +1,12 @@
-#eska = AMS1
-#desna = LON1
 [sentry]
-eska.dmdirc.com
+ams3-1.droplets.dmdirc.com
 [nightlies]
-eska.dmdirc.com
+ams3-1.droplets.dmdirc.com
 [reports]
-desna.dmdirc.com
+lon1-1.droplets.dmdirc.com
 [nexus]
-desna.dmdirc.com
+lon1-1.droplets.dmdirc.com
 [updater]
-eska.dmdirc.com
+ams3-1.droplets.dmdirc.com
 [feedback]
-desna.dmdirc.com
+lon1-1.droplets.dmdirc.com
