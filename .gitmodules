@@ -1,0 +1,8 @@
+[submodule "ansible/chris-roles"]
+	path = ansible/chris-roles
+	url = https://github.com/csmith/ansible-roles.git
+	branch = master
+[submodule "ansible/greg-roles"]
+	path = ansible/greg-roles
+	url = https://github.com/greboid/ansible-roles.git
+	branch = master
