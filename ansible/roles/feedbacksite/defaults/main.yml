@@ -1,0 +1,6 @@
+---
+phpfpm_path: /etc/php5/fpm/pool.d/
+webserver_sites_available: /etc/nginx/sites-available
+webserver_sites_enabled: /etc/nginx/sites-enabled
+feedbacksite_root: /home/sites-feedback/
+feedbacksite_user: sites-feedback
