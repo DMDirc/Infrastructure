@@ -5,5 +5,5 @@
     state: restarted
 - name: restart-php
   service:
-    name: php-fpm
+    name: php5-fpm
     state: restarted
