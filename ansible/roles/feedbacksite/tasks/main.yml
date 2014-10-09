@@ -14,6 +14,8 @@
   file:
     path: "{{ feedbacksite_root }}/www"
     state: directory
+    group: "{{ feedbacksite_user }}"
+    owner: "{{ feedbacksite_user }}"
   tags: [sites,sites-feedback]
 - name: Create feedback site ssl
   file:
