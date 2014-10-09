@@ -45,9 +45,23 @@
   command: openssl req -new -nodes -x509 -subj "/C=GB/ST=London/L=London/O=DMDirc/CN=feedback.dmdirc.com" -days 3650 -keyout {{ feedbacksite_root}}/ssl/ssl.key -out {{ feedbacksite_root}}/ssl/ssl.pem -extensions v3_ca creates={{ feedbacksite_root}}/ssl/ssl.pem
   notify: restart-webserver
   tags: [sites,sites-feedback]
+- name: Create client directory
+  file:
+    path: "{{ feedbacksite_root }}/www/dialog/"
+    state: directory
+    group: "{{ feedbacksite_user }}"
+    owner: "{{ feedbacksite_user }}"
+  tags: [sites,sites-feedback]
+- name: Copy feedback for dialog
+  template:
+    src: dialog.php
+    dest: "{{ feedbacksite_root }}/www/dialog/index.php"
+    group: "{{ feedbacksite_user }}"
+    owner: "{{ feedbacksite_user }}"
+  tags: [sites,sites-feedback]
 - name: Copy feedback site
   template:
-    src: feedback.php
+    src: web.php
     dest: "{{ feedbacksite_root }}/www/index.php"
     group: "{{ feedbacksite_user }}"
     owner: "{{ feedbacksite_user }}"
