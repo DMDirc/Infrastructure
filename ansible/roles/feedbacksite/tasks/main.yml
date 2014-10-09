@@ -47,15 +47,15 @@
   tags: [sites,sites-feedback]
 - name: Create client directory
   file:
-    path: "{{ feedbacksite_root }}/www/client/"
+    path: "{{ feedbacksite_root }}/www/dialog/"
     state: directory
     group: "{{ feedbacksite_user }}"
     owner: "{{ feedbacksite_user }}"
   tags: [sites,sites-feedback]
-- name: Copy feedback for client
+- name: Copy feedback for dialog
   template:
-    src: client.php
-    dest: "{{ feedbacksite_root }}/www/client/index.php"
+    src: dialog.php
+    dest: "{{ feedbacksite_root }}/www/dialog/index.php"
     group: "{{ feedbacksite_user }}"
     owner: "{{ feedbacksite_user }}"
   tags: [sites,sites-feedback]
