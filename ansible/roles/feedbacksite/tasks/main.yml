@@ -1,0 +1,34 @@
+---
+- name: Create feedback group
+  group:
+    name: "{{ feedbacksite_user }}"
+- name: Create feedback user
+  user:
+    name: "{{ feedbacksite_user }}"
+    comment: "Feedback site user"
+    group: "{{ feedbacksite_user }}"
+    home: "{{ feedbacksite_root }}"
+- name: Create feedback site doc root
+  file:
+    path: "{{ feedbacksite_root }}/www"
+    state: directory
+- name: Create feedback site ssl
+  file:
+    path: "{{ feedbacksite_root }}/ssl"
+    state: directory 
+- name: Create feedback site
+  template:
+    src: site.conf
+    dest: "{{ webserver_sites_available }}/feedback"
+  notify: restart-webserver
+- name: Create feedback symlink
+  file:
+    src: "{{ webserver_sites_available }}/feedback"
+    dest: "{{ webserver_sites_enabled }}/feedback"
+    state: link
+  notify: restart-webserver
+- name: Create php config
+  template:
+    src: php.conf
+    dest: "{{ phpfpm_path }}/{{ feedbacksite_user }}.conf"
+  notify: restart-php
