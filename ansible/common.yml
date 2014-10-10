@@ -2,3 +2,9 @@
 - hosts: all
   roles:
     - common
+    - role: sshd
+
+      # Note: these are resolved relative to the role's files dir.
+      ssh_root_key_glob: ../../../data/keys/active/*
+      ssh_revoked_root_key_glob: ../../../data/keys/revoked/*
+
