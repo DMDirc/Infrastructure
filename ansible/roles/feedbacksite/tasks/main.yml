@@ -5,6 +5,7 @@
     state: directory
     group: "{{ feedbacksite_user }}"
     owner: "{{ feedbacksite_user }}"
+  notify: restart-webserver
   tags: [sites,sites-feedback]
 - name: Create feedback group
   group:
