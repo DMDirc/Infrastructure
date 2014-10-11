@@ -1,0 +1,3 @@
+---
+dependencies:
+  - { role: sudoer, user: shane, need_password: No }
