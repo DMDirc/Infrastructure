@@ -1,0 +1,5 @@
+---
+dependencies:
+  - role: php5-fpm-nginx
+    php5_fpm_nginx_pool_name: "{{ feedbacksite_user }}"
+    php5_fpm_nginx_config_dir: "{{ feedbacksite_root}}/conf"
