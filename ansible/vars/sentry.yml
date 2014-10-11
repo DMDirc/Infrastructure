@@ -1,0 +1,7 @@
+---
+
+sentry_url: https://sentry.dmdirc.com
+sentry_port: 7027
+
+sentry_email_address: sentry-noreply@dmdirc.com
+sentry_superuser_email: devs-public@dmdirc.com
