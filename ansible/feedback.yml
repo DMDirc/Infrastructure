@@ -1,6 +1,5 @@
 ---
 - hosts: feedback
   roles:
-    - nginx
-    - php5-fpm
+    - php5-fpm-nginx
     - feedbacksite
