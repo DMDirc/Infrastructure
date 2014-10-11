@@ -8,3 +8,4 @@
       ssh_root_key_glob: ../../../data/keys/active/*
       ssh_revoked_root_key_glob: ../../../data/keys/revoked/*
     - role: shane-user
+    - role: backuppc-client

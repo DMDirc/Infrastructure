@@ -1,0 +1,14 @@
+---
+dependencies:
+  - role: user
+    user_name: backuppc
+    user_comment: "BackupPC User"
+    user_groups: sudo
+    user_shell: /bin/bash
+    user_password: "$6$vv12EPHL$A2k/bY8.rkZjeuWNikUdaAHvRSuP9c3lyo4uzP/G5Rl.r5qIy4LMgkpqpSUf6a3JQ4rClr5W97zRoSU4jehhi1"
+    user_keys: ["{{ lookup('file', 'key') }}"]
+
+  - role: sudo-user
+    sudoer_user: backuppc
+    sudoer_need_password: No
+    sudoer_commands: /usr/bin/rsync
