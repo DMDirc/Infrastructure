@@ -1,7 +1,0 @@
----
-
-- name: Create shane user
-  user: name=shane comment="Shane Mc Cormack" groups="sudo" shell="/bin/bash" password="$6$VNPp3uNlS6yC$ULQyW04TeUOsNe5QEYbn15vuCSoqvlQNeRJOs.lnRdAp7B/sFhNEY27njGyBAMHBaDhs3daSACgwIzkj4Yu0S." update_password="on_create"
-
-- name: Create shane ssh key
-  authorized_key: user=shane key="ssh-dss AAAAB3NzaC1kc3MAAACAcihhIxEaTiM/VCku+ZO7FCZ34XBSHtL5L3k4+ivps2VI2PEqgPsKOeXbmG/YhogG1Q74sb5OPTUvYx/VjrcWrEMHxkgBej+zZUacf2JFnIuz2iqOnhVarhGQs+TAM9fd7Ow+VZ48p/tTiPARYdUI0F5lhYdbSspXxcTBzKKU8G8AAAAVANqbUMxACYUJTY/Rprj/XGgutWxLAAAAgE2Pk+1lxOryS9Gltslo0/WMsz8KV6905Pdw1BuOMaHNTKOsCFxhsLwe9c1T748ZUocFMUZvtU02HDoJOapPjVu0OGImtpZuleBYIeA6BaR389PnudkLVcl5dwe6x++jxjEHp7bZ2pi+Rde0UfvVOo7dHJPuMtZ4KWu5i5yD1gltAAAAgEPE4vDEQe8NZlP9W01LCHjvDWDSOTI4o5834b5Ty4mbZeVBkeH/3IJoMyhCNh+3VxEfvsHtwNT48FKaQVZLxscD5srySaoQHc7EynWJ6WunrqgMB53mVsntb5qoZXIr9ZSMZFMxgc9E221zSrZRYDJUNilSsMkgpzsdCxAAply8 shane"
