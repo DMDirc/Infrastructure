@@ -1,0 +1,15 @@
+---
+
+- name: Ensure /etc/sudoers.d directory is present
+  file: path=/etc/sudoers.d state=directory
+
+- name: Ensure /etc/sudoers.d is scanned by sudo
+  lineinfile: dest=/etc/sudoers regexp="#includedir\s+/etc/sudoers.d" line="#includedir /etc/sudoers.d"
+
+- name: Add {{user}} user to sudoers (password required)
+  copy: dest=/etc/sudoers.d/{{user}} content="# Managed by ansible\n{{ user }} ALL=(ALL) ALL\n" group=root owner=root mode=0440
+  when: need_password
+
+- name: Add {{user}} user to sudoers (no password required)
+  copy: dest=/etc/sudoers.d/{{user}} content="# Managed by ansible\n{{ user }} ALL=(ALL) NOPASSWD:ALL\n" group=root owner=root mode=0440
+  when: not need_password
