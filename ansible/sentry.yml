@@ -2,3 +2,4 @@
 - hosts: sentry
   roles:
     - nginx
+    - sentry
