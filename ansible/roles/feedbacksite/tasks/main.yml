@@ -1,50 +1,4 @@
 ---
-- name: Create feedback group
-  group:
-    name: "{{ feedbacksite_user }}"
-  tags: [sites,sites-feedback]
-- name: Create feedback user
-  user:
-    name: "{{ feedbacksite_user }}"
-    comment: "Feedback site user"
-    group: "{{ feedbacksite_user }}"
-    home: "{{ feedbacksite_root }}"
-  tags: [sites,sites-feedback]
-- name: Create feedback site doc root
-  file:
-    path: "{{ feedbacksite_root }}/www"
-    state: directory
-    group: "{{ feedbacksite_user }}"
-    owner: "{{ feedbacksite_user }}"
-  tags: [sites,sites-feedback]
-- name: Create feedback site ssl
-  file:
-    path: "{{ feedbacksite_root }}/ssl"
-    state: directory 
-  tags: [sites,sites-feedback]
-- name: Create feedback site
-  template:
-    src: site.conf
-    dest: "{{ webserver_sites_available }}/feedback"
-  notify: restart-webserver
-  tags: [sites,sites-feedback]
-- name: Create feedback symlink
-  file:
-    src: "{{ webserver_sites_available }}/feedback"
-    dest: "{{ webserver_sites_enabled }}/feedback"
-    state: link
-  notify: restart-webserver
-  tags: [sites,sites-feedback]
-- name: Create php config
-  template:
-    src: php.conf
-    dest: "{{ phpfpm_path }}/{{ feedbacksite_user }}.conf"
-  notify: restart-php
-  tags: [sites,sites-feedback]
-- name: create self-signed SSL cert
-  command: openssl req -new -nodes -x509 -subj "/C=GB/ST=London/L=London/O=DMDirc/CN=feedback.dmdirc.com" -days 3650 -keyout {{ feedbacksite_root}}/ssl/ssl.key -out {{ feedbacksite_root}}/ssl/ssl.pem -extensions v3_ca creates={{ feedbacksite_root}}/ssl/ssl.pem
-  notify: restart-webserver
-  tags: [sites,sites-feedback]
 - name: Create client directory
   file:
     path: "{{ feedbacksite_root }}/www/dialog/"
@@ -65,12 +19,4 @@
     dest: "{{ feedbacksite_root }}/www/index.php"
     group: "{{ feedbacksite_user }}"
     owner: "{{ feedbacksite_user }}"
-  tags: [sites,sites-feedback]
-- name: Create log directory
-  file:
-    path: "{{ feedbacksite_root }}/logs"
-    state: directory
-    group: "{{ feedbacksite_user }}"
-    owner: "{{ feedbacksite_user }}"
-  notify: restart-webserver
   tags: [sites,sites-feedback]
