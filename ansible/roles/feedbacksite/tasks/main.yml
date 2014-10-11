@@ -1,12 +1,4 @@
 ---
-- name: Create log directory
-  file:
-    path: "{{ feedbacksite_root }}/logs"
-    state: directory
-    group: "{{ feedbacksite_user }}"
-    owner: "{{ feedbacksite_user }}"
-  notify: restart-webserver
-  tags: [sites,sites-feedback]
 - name: Create feedback group
   group:
     name: "{{ feedbacksite_user }}"
@@ -73,4 +65,12 @@
     dest: "{{ feedbacksite_root }}/www/index.php"
     group: "{{ feedbacksite_user }}"
     owner: "{{ feedbacksite_user }}"
+  tags: [sites,sites-feedback]
+- name: Create log directory
+  file:
+    path: "{{ feedbacksite_root }}/logs"
+    state: directory
+    group: "{{ feedbacksite_user }}"
+    owner: "{{ feedbacksite_user }}"
+  notify: restart-webserver
   tags: [sites,sites-feedback]
