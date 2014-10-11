@@ -10,10 +10,10 @@
   file: path=/etc/sudoers.d state=directory
 
 - name: Ensure /etc/sudoers.d is scanned by sudo
-  action: lineinfile dest=/etc/sudoers regexp="#includedir\s+/etc/sudoers.d" line="#includedir /etc/sudoers.d"
+  lineinfile: dest=/etc/sudoers regexp="#includedir\s+/etc/sudoers.d" line="#includedir /etc/sudoers.d"
 
 - name: Add shane user to sudoers
-  action: 'lineinfile dest=/etc/sudoers.d/shane state=present create=yes regexp="shane .*" line="shane ALL=(ALL) ALL"'
+  lineinfile: dest=/etc/sudoers.d/shane state=present create=yes regexp="shane .*" line="shane ALL=(ALL) ALL"
 
 - name: Ensure /etc/sudoers.d/shane file has correct permissions
-  action: file path=/etc/sudoers.d/shane mode=0440 state=file owner=root group=root
+  file: path=/etc/sudoers.d/shane mode=0440 state=file owner=root group=root
