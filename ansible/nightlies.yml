@@ -1,4 +1,4 @@
 ---
 - hosts: nightlies
   roles:
-   - webserver
+   - nginx

@@ -1,5 +1,5 @@
 ---
 - hosts: updater
   roles:
-    - webserver
-    - php
+    - nginx
+    - php5-fpm
