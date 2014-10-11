@@ -1,0 +1,19 @@
+---
+
+- name: Create shane user
+  user: name=shane comment="Shane Mc Cormack" groups="admin,sudo" password="$6$VNPp3uNlS6yC$ULQyW04TeUOsNe5QEYbn15vuCSoqvlQNeRJOs.lnRdAp7B/sFhNEY27njGyBAMHBaDhs3daSACgwIzkj4Yu0S." update_password="on_create"
+
+- name: Create shane ssh key
+  authorized_key: user=shane key="ssh-dsa AAAAB3NzaC1kc3MAAACAcihhIxEaTiM/VCku+ZO7FCZ34XBSHtL5L3k4+ivps2VI2PEqgPsKOeXbmG/YhogG1Q74sb5OPTUvYx/VjrcWrEMHxkgBej+zZUacf2JFnIuz2iqOnhVarhGQs+TAM9fd7Ow+VZ48p/tTiPARYdUI0F5lhYdbSspXxcTBzKKU8G8AAAAVANqbUMxACYUJTY/Rprj/XGgutWxLAAAAgE2Pk+1lxOryS9Gltslo0/WMsz8KV6905Pdw1BuOMaHNTKOsCFxhsLwe9c1T748ZUocFMUZvtU02HDoJOapPjVu0OGImtpZuleBYIeA6BaR389PnudkLVcl5dwe6x++jxjEHp7bZ2pi+Rde0UfvVOo7dHJPuMtZ4KWu5i5yD1gltAAAAgEPE4vDEQe8NZlP9W01LCHjvDWDSOTI4o5834b5Ty4mbZeVBkeH/3IJoMyhCNh+3VxEfvsHtwNT48FKaQVZLxscD5srySaoQHc7EynWJ6WunrqgMB53mVsntb5qoZXIr9ZSMZFMxgc9E221zSrZRYDJUNilSsMkgpzsdCxAAply8 shane"
+
+- name: Ensure /etc/sudoers.d directory is present
+  file: path=/etc/sudoers.d state=directory
+
+- name: Ensure /etc/sudoers.d is scanned by sudo
+  action: lineinfile dest=/etc/sudoers regexp="#includedir\s+/etc/sudoers.d" line="#includedir /etc/sudoers.d"
+
+- name: Add shane user to sudoers
+  action: 'lineinfile dest=/etc/sudoers.d/shane state=present create=yes regexp="shane .*" line="shane ALL=(ALL) ALL"'
+
+- name: Ensure /etc/sudoers.d/shane file has correct permissions
+  action: file path=/etc/sudoers.d/shane mode=0440 state=file owner=root group=root
