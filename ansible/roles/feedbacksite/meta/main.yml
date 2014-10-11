@@ -1,5 +1,5 @@
 ---
 dependencies:
   - role: nginx-php-site
-    nginx_php_site_hostname: feedback.dmdirc.com
-    nginx_php_site_user: sites-feedback
+    nginx_php_site_hostname: "{{ feedbacksite_hostname }}"
+    nginx_php_site_user: "{{ feedbacksite_user }}"

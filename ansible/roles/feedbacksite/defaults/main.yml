@@ -1,3 +1,4 @@
 ---
 feedbacksite_user: sites-feedback
+feedbacksite_hostname: feedback.dmdirc.com
 feedbacksite_root: "/home/{{ feedbacksite_user }}"
