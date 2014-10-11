@@ -1,4 +1,8 @@
 ---
 - hosts: sentry
+  vars_files:
+    - vars/sentry.yml
+    - vars/sentry-private.yml
   roles:
     - nginx
+    - sentry
