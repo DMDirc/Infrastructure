@@ -1,0 +1,80 @@
+########################################
+# Load in local settings from Vagrantfile.local this should be a yaml
+# file which look similar to:
+#
+#---
+#ansible_groups:
+#  devtest:
+#    - test1
+#    - test2
+#
+#dev_nodes:
+#  - hostname: test1
+#    ip: 172.16.36.10
+#  - hostname: test2
+#    ip: 172.16.36.20
+#
+#
+# This would allow for 2 test nodes, and place them both in the "devtest"
+# group. If you are happy with the default nodes and groups you can leave
+# this blank.
+####################
+require 'yaml'
+settings = {}
+settings = YAML.load_file 'Vagrantfile.local' if File.exist?('Vagrantfile.local')
+########################################
+
+########################################
+# Set some defaults incase there is no Vagrantfile.local or it doesn't
+# contain everything.
+####################
+settings['dev_nodes'] = [
+	{'hostname' => 'infra1', 'ip' => '172.16.36.10'},
+	{'hostname' => 'infra2', 'ip' => '172.16.36.20'},
+	{'hostname' => 'infra3', 'ip' => '172.16.36.30'},
+] if not settings.has_key?('dev_nodes')
+
+settings['ansible_groups'] = {
+	'test' => ["infra1", "infra2", "infra3"],
+} if not settings.has_key?('ansible_groups')
+########################################
+
+########################################
+# Set the Ansible configuration path, this is separate from the provisioner
+# at this time
+####################
+ENV['ANSIBLE_CONFIG'] = "ansible.cfg"
+########################################
+
+########################################
+# Actually set up vagrant!
+####################
+Vagrant.configure("2") do |config|
+	# Define a vagrant client for each node in the array
+	settings['dev_nodes'].each do |node|
+		config.vm.define node['hostname'] do |node_config|
+			# Base box configuration
+			node_config.vm.box = 'ubuntu/trusty64'
+
+			# Hostname and network configuration
+			node_config.vm.hostname = node['hostname'] + '.' + ".test.dmdirc.com"
+			node_config.vm.network :private_network, ip: node['ip']
+
+			# Increase the RAM
+			config.vm.provider :virtualbox do |vb|
+				vb.customize ["modifyvm", :id, "--memory", 512]
+			end
+
+			# Provision with ansible.
+			config.vm.provision "ansible" do |ansible|
+				# We login as "vagrant" not root, so we need to use sudo even
+				# though our playbook doesn't usually.
+				ansible.sudo = true
+				ansible.playbook = "all.yml"
+				ansible.host_key_checking = false
+				ansible.groups = settings['ansible_groups']
+			end
+		end
+	end
+end
+########################################
