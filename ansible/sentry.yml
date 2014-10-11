@@ -4,5 +4,8 @@
     - vars/sentry.yml
     - vars/sentry-private.yml
   roles:
-    - nginx
     - sentry
+    - role: nginx-upstream-site
+      nginx_upstream_site_hostname: "{{ sentry_hostname }}"
+      nginx_upstream_site_user: sites-sentry
+      nginx_upstream_site_upstream: "http://{{ sentry_hostname }}:{{ sentry_port }}"
