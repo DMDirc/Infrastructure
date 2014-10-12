@@ -1,7 +1,7 @@
 ---
 
 sentry_hostname: sentry.dmdirc.com
-sentry_url: "https:// {{sentry_hostname }}/"
+sentry_url: "https://{{sentry_hostname }}"
 sentry_port: 7027
 
 sentry_email_address: sentry-noreply@dmdirc.com
