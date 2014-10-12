@@ -6,3 +6,4 @@
 - include: reports.yml
 - include: sentry.yml
 - include: updater.yml
+- include: binaries.yml
