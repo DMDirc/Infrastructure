@@ -1,0 +1,5 @@
+---
+dependencies:
+  - role: nginx-php-site
+    nginx_php_site_hostname: "{{ reportssite_hostname }}"
+    nginx_php_site_user: "{{ reportssite_user }}"

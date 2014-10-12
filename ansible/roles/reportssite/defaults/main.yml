@@ -1,0 +1,4 @@
+---
+reportssite_user: sites-reports
+reportssite_hostname: reports.dmdirc.com
+reportssite_root: "/home/{{ reportssite_user }}"
