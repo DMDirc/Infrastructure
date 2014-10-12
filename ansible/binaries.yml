@@ -1,0 +1,6 @@
+---
+- hosts: binaries
+  roles:
+    - role: nginx-site
+      nginx_php_site_hostname: binary.dmdirc.com
+      nginx_php_site_user: sites-binaries
