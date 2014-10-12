@@ -1,0 +1,8 @@
+---
+- name: Copy reports site
+  copy:
+    src: index.php
+    dest: "{{ reportssite_root }}/www/index.php"
+    group: "{{ reportssite_user }}"
+    owner: "{{ reportssite_user }}"
+  tags: [sites,sites-reports]
