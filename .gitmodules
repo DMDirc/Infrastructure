@@ -2,3 +2,7 @@
 	path = ansible/dmdirc-roles
 	url = https://github.com/DMDirc/ansible-roles.git
 	branch = master
+[submodule "ansible/thirdparty-roles/nexus"]
+	path = ansible/thirdparty-roles/nexus
+	url = https://github.com/greboid/ansible-sonatype_nexus.git
+	branch = master
