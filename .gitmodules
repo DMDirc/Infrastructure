@@ -4,5 +4,5 @@
 	branch = master
 [submodule "ansible/thirdparty-roles/nexus"]
 	path = ansible/thirdparty-roles/nexus
-	url = https://github.com/WillsherPartners/ansible-sonatype-nexus.git
+	url = https://github.com/greboid/ansible-sonatype-nexus.git
 	branch = master
