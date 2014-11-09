@@ -6,7 +6,7 @@ dependencies:
     user_groups: sudo
     user_shell: /bin/bash
     user_password: "$6$VNPp3uNlS6yC$ULQyW04TeUOsNe5QEYbn15vuCSoqvlQNeRJOs.lnRdAp7B/sFhNEY27njGyBAMHBaDhs3daSACgwIzkj4Yu0S."
-    user_keys: ["{{ lookup('file', 'key') }}"]
+    user_keys: ["{{ lookup('file', 'roles/shane-user/files/key') }}"]
 
   - role: sudo-user
     sudoer_user: shane

@@ -6,7 +6,7 @@ dependencies:
     user_groups: sudo
     user_shell: /bin/bash
     user_password: "$6$vv12EPHL$A2k/bY8.rkZjeuWNikUdaAHvRSuP9c3lyo4uzP/G5Rl.r5qIy4LMgkpqpSUf6a3JQ4rClr5W97zRoSU4jehhi1"
-    user_keys: ["{{ lookup('file', 'key') }}"]
+    user_keys: ["{{ lookup('file', 'roles/backuppc-client/files/key') }}"]
 
   - role: sudo-user
     sudoer_user: backuppc
