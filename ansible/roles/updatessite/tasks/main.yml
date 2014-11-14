@@ -9,6 +9,6 @@
     accept_hostkey: yes
     force: yes
     update: yes
-    repo: git@github.com:dmdirc/updater-website.git
+    repo: https://github.com/DMDirc/updater-website.git
     dest: "{{ updatessite_root }}/www"
   tags: [sites,sites-updates]
