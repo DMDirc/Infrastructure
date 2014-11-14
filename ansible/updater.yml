@@ -1,4 +1,4 @@
 ---
 - hosts: updater
   roles:
-    - php5-fpm-nginx
+    - updatessite

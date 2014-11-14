@@ -1,0 +1,4 @@
+---
+updatessite_user: sites-updater
+updatessite_hostname: updates.dmdirc.com
+updatessite_root: "/home/{{ updatessite_user }}"

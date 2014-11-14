@@ -1,0 +1,8 @@
+---
+- name: Copy Updates site
+  copy:
+    src: index.php
+    dest: "{{ updatessite_root }}/www/index.php"
+    group: "{{ updatessite_user }}"
+    owner: "{{ updatessite_user }}"
+  tags: [sites,sites-updates]
