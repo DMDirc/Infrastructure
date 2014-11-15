@@ -1,6 +1,5 @@
 ---
-redirects_user: sites-redirects
-redirects_root: "/home/{{redirects_user}}"
 hosts:
   redirect.dmdirc.com:
     - { location: "/java/windows/", redirect: "javadl.sun.com/webapps/download/AutoDL?BundleId=98426" }
+redirects_fallback: https://www.dmdirc.com
