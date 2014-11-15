@@ -1,5 +1,7 @@
 ---
 hosts:
   redirect.dmdirc.com:
-    - { location: "/java/windows/", redirect: "javadl.sun.com/webapps/download/AutoDL?BundleId=98426" }
-redirects_fallback: https://www.dmdirc.com
+    rules:
+      - location: "/java/windows/"
+        redirect: "javadl.sun.com/webapps/download/AutoDL?BundleId=98426"
+    fallback: https://www.dmdirc.com
