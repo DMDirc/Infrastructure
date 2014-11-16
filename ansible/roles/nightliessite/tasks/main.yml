@@ -1,0 +1,5 @@
+---
+- name: Copy the index
+  copy:
+    src: index.php
+    dest: "{{ nightliessite_root }}/www/index.php"
