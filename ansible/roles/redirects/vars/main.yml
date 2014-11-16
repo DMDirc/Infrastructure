@@ -1,7 +1,212 @@
 ---
 hosts:
+
   redirect.dmdirc.com:
     rules:
-      - location: "/java/windows/"
-        redirect: "javadl.sun.com/webapps/download/AutoDL?BundleId=98426"
+      - location: /java/windows/
+        redirect: https://javadl.oracle.com/webapps/download/AutoDL?BundleId=98426
     fallback: https://www.dmdirc.com
+
+  jira.dmdirc.com:
+    rules:
+      - location: /browse/CLIENT-530
+        redirect: https://github.com/DMDirc/Parser/issues/6
+      - location: /browse/CLIENT-529
+        redirect: https://github.com/DMDirc/DMDirc/issues/13
+      - location: /browse/CLIENT-520
+        redirect: https://github.com/DMDirc/DMDirc/issues/14
+      - location: /browse/CLIENT-524
+        redirect: https://github.com/DMDirc/Plugins/issues/8
+      - location: /browse/CLIENT-514
+        redirect: https://github.com/DMDirc/DMDirc/issues/15
+      - location: /browse/CLIENT-513
+        redirect: https://github.com/DMDirc/DMDirc/issues/16
+      - location: /browse/CLIENT-507
+        redirect: https://github.com/DMDirc/DMDirc/issues/17
+      - location: /browse/CLIENT-506
+        redirect: https://github.com/DMDirc/Parser/issues/7
+      - location: /browse/CLIENT-500
+        redirect: https://github.com/DMDirc/Plugins/issues/9
+      - location: /browse/CLIENT-493
+        redirect: https://github.com/DMDirc/DMDirc/issues/18
+      - location: /browse/CLIENT-483
+        redirect: https://github.com/DMDirc/Parser/issues/8
+      - location: /browse/CLIENT-400
+        redirect: https://github.com/DMDirc/Plugins/issues/12
+      - location: /browse/CLIENT-387
+        redirect: https://github.com/DMDirc/Plugins/issues/13
+      - location: /browse/CLIENT-473
+        redirect: https://github.com/DMDirc/DMDirc/issues/33
+      - location: /browse/CLIENT-396
+        redirect: https://github.com/DMDirc/DMDirc/issues/34
+      - location: /browse/CLIENT-372
+        redirect: https://github.com/DMDirc/DMDirc/issues/35
+      - location: /browse/CLIENT-405
+        redirect: https://github.com/DMDirc/Parser/issues/9
+      - location: /browse/CLIENT-247
+        redirect: https://github.com/DMDirc/DMDirc/issues/38
+      - location: /browse/CLIENT-476
+        redirect: https://github.com/DMDirc/DMDirc/issues/39
+      - location: /browse/CLIENT-469
+        redirect: https://github.com/DMDirc/Plugins/issues/20
+      - location: /browse/CLIENT-415
+        redirect: https://github.com/DMDirc/DMDirc/issues/43
+      - location: /browse/CLIENT-378
+        redirect: https://github.com/DMDirc/Plugins/issues/21
+      - location: /browse/CLIENT-234
+        redirect: https://github.com/DMDirc/Plugins/issues/22
+      - location: /browse/CLIENT-286
+        redirect: https://github.com/DMDirc/DMDirc/issues/45
+      - location: /browse/CLIENT-426
+        redirect: https://github.com/DMDirc/Installers/issues/1
+      - location: /browse/CLIENT-202
+        redirect: https://github.com/DMDirc/DMDirc/issues/46
+      - location: /browse/CLIENT-182
+        redirect: https://github.com/DMDirc/Parser/issues/24
+      - location: /browse/CLIENT-52
+        redirect: https://github.com/DMDirc/Parser/issues/25
+      - location: /browse/CLIENT-51
+        redirect: https://github.com/DMDirc/Parser/issues/26
+      - location: /browse/CLIENT-128
+        redirect: https://github.com/DMDirc/Plugins/issues/35
+      - location: /browse/CLIENT-140
+        redirect: https://github.com/DMDirc/Plugins/issues/36
+      - location: /browse/CLIENT-450
+        redirect: https://github.com/DMDirc/DMDirc/issues/48
+      - location: /browse/CLIENT-421
+        redirect: https://github.com/DMDirc/Plugins/issues/38
+      - location: /browse/CLIENT-350
+        redirect: https://github.com/DMDirc/Plugins/issues/39
+      - location: /browse/CLIENT-338
+        redirect: https://github.com/DMDirc/DMDirc/issues/49
+      - location: /browse/CLIENT-463
+        redirect: https://github.com/DMDirc/DMDirc/issues/50
+      - location: /browse/CLIENT-40
+        redirect: https://github.com/DMDirc/DMDirc/issues/51
+      - location: /browse/CLIENT-39
+        redirect: https://github.com/DMDirc/DMDirc/issues/52
+      - location: /browse/CLIENT-402
+        redirect: https://github.com/DMDirc/Plugins/issues/40
+      - location: /browse/CLIENT-425
+        redirect: https://github.com/DMDirc/Plugins/issues/41
+      - location: /browse/CLIENT-65
+        redirect: https://github.com/DMDirc/DMDirc/issues/54
+      - location: /browse/CLIENT-54
+        redirect: https://github.com/DMDirc/DMDirc/issues/55
+      - location: /browse/CLIENT-136
+        redirect: https://github.com/DMDirc/DMDirc/issues/56
+      - location: /browse/CLIENT-479
+        redirect: https://github.com/DMDirc/DMDirc/issues/57
+      - location: /browse/CLIENT-470
+        redirect: https://github.com/DMDirc/DMDirc/issues/58
+      - location: /browse/CLIENT-336
+        redirect: https://github.com/DMDirc/DMDirc/issues/59
+      - location: /browse/CLIENT-430
+        redirect: https://github.com/DMDirc/DMDirc/issues/60
+      - location: /browse/INFRA-69
+        redirect: https://github.com/DMDirc/Infrastructure/issues/1
+      - location: /browse/INFRA-70
+        redirect: https://github.com/DMDirc/Infrastructure/issues/2
+      - location: /browse/INFRA-68
+        redirect: https://github.com/DMDirc/Infrastructure/issues/3
+      - location: /browse/CLIENT-332
+        redirect: https://github.com/DMDirc/DMDirc/issues/61
+      - location: /browse/WEBSITE-8
+        redirect: https://github.com/DMDirc/Infrastructure/issues/4
+      - location: /browse/WEBSITE-5
+        redirect: https://github.com/DMDirc/Infrastructure/issues/6
+      - location: /browse/CLIENT-322
+        redirect: https://github.com/DMDirc/Parser/issues/27
+      - location: /browse/MODES-6
+        redirect: https://github.com/DMDirc/server-metadata/issues/1
+      - location: /browse/MODES-5
+        redirect: https://github.com/DMDirc/server-metadata/issues/2
+      - location: /browse/MODES-4
+        redirect: https://github.com/DMDirc/server-metadata/issues/3
+      - location: /browse/MODES-3
+        redirect: https://github.com/DMDirc/server-metadata/issues/4
+      - location: /browse/CLIENT-217
+        redirect: https://github.com/DMDirc/Plugins/issues/42
+      - location: /browse/CLIENT-452
+        redirect: https://github.com/DMDirc/Plugins/issues/43
+      - location: /browse/CLIENT-53
+        redirect: https://github.com/DMDirc/Plugins/issues/44
+      - location: /browse/CLIENT-240
+        redirect: https://github.com/DMDirc/Plugins/issues/45
+      - location: /browse/CLIENT-242
+        redirect: https://github.com/DMDirc/Plugins/issues/46
+      - location: /browse/CLIENT-27
+        redirect: https://github.com/DMDirc/Plugins/issues/49
+      - location: /browse/CLIENT-256
+        redirect: https://github.com/DMDirc/Parser/issues/28
+      - location: /browse/CLIENT-313
+        redirect: https://github.com/DMDirc/Plugins/issues/49
+      - location: /browse/CLIENT-33
+        redirect: https://github.com/DMDirc/Plugins/issues/50
+      - location: /browse/CLIENT-221
+        redirect: https://github.com/DMDirc/DMDirc/issues/64
+      - location: /browse/CLIENT-335
+        redirect: https://github.com/DMDirc/DMDirc/issues/65
+      - location: /browse/CLIENT-205
+        redirect: https://github.com/DMDirc/Plugins/issues/50
+      - location: /browse/CLIENT-297
+        redirect: https://github.com/DMDirc/DMDirc/issues/66
+      - location: /browse/CLIENT-17
+        redirect: https://github.com/DMDirc/Plugins/issues/51
+      - location: /browse/CLIENT-78
+        redirect: https://github.com/DMDirc/DMDirc/issues/67
+      - location: /browse/CLIENT-198
+        redirect: https://github.com/DMDirc/DMDirc/issues/68
+      - location: /browse/CLIENT-379
+        redirect: https://github.com/DMDirc/Plugins/issues/53
+      - location: /browse/CLIENT-28
+        redirect: https://github.com/DMDirc/Plugins/issues/54
+      - location: /browse/CLIENT-18
+        redirect: https://github.com/DMDirc/Plugins/issues/55
+      - location: /browse/CLIENT-237
+        redirect: https://github.com/DMDirc/DMDirc/issues/71
+      - location: /browse/CLIENT-314
+        redirect: https://github.com/DMDirc/DMDirc/issues/72
+      - location: /browse/CLIENT-29
+        redirect: https://github.com/DMDirc/DMDirc/issues/73
+      - location: /browse/CLIENT-204
+        redirect: https://github.com/DMDirc/Parser/issues/29
+      - location: /browse/CLIENT-323
+        redirect: https://github.com/DMDirc/DMDirc/issues/74
+      - location: /browse/CLIENT-109
+        redirect: https://github.com/DMDirc/Infrastructure/issues/8
+      - location: /browse/CLIENT-480
+        redirect: https://github.com/DMDirc/DMDirc/issues/75
+      - location: /browse/CLIENT-449
+        redirect: https://github.com/DMDirc/DMDirc/issues/76
+      - location: /browse/CLIENT-409
+        redirect: https://github.com/DMDirc/DMDirc/issues/77
+      - location: /browse/CLIENT-445
+        redirect: https://github.com/DMDirc/DMDirc/issues/78
+      - location: /browse/CLIENT-222
+        redirect: https://github.com/DMDirc/Plugins/issues/60
+      - location: /browse/CLIENT-55
+        redirect: https://github.com/DMDirc/DMDirc/issues/81
+      - location: /browse/CLIENT-123
+        redirect: https://github.com/DMDirc/Plugins/issues/61
+    fallback: https://github.com/DMDirc/DMDirc/issues
+
+  blog.dmdirc.com:
+    rules:
+      - location: /([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/?
+        redirect: https://www.dmdirc.com/$1/$2/$3/$4
+      - location: .*/feed/$
+        redirect: https://www.dmdirc.com/feed.xml
+    fallback: https://www.dmdirc.com/news
+
+  gerrit.dmdirc.com:
+    rules: []
+    fallback: https://github.com/pulls?q=is%3Aopen+is%3Apr+user%3Admdirc
+
+  git.dmdirc.com:
+    rules:
+      - location: /cgit.cgi/client
+        redirect: https://github.com/DMDirc/DMDirc
+      - location: /cgit.cgi/(annotations|installer|parser|plugins|util)
+        redirect: https://github.com/DMDirc/$1
+    fallback: https://github.com/DMDirc
