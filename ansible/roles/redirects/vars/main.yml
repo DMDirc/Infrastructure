@@ -213,7 +213,7 @@ hosts:
 
   teamcity.dmdirc.com:
     rules: []
-    fallback: https://github.com/csmith/Meta#contributing-and-continuous-integration
+    fallback: https://github.com/DMDirc/Meta#contributing-and-continuous-integration
 
   wiki.dmdirc.com:
     rules:
