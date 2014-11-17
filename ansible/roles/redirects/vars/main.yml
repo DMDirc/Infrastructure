@@ -210,3 +210,61 @@ hosts:
       - location: /cgit.cgi/(annotations|installer|parser|plugins|util)
         redirect: https://github.com/DMDirc/$1
     fallback: https://github.com/DMDirc
+
+  wiki.dmdirc.com:
+    rules:
+      - location: /documentation:actions:actions
+        redirect: https://github.com/DMDirc/Meta/wiki/actions
+      - location: /documentation:actions:concurrency
+        redirect: https://github.com/DMDirc/Meta/wiki/actions-concurrency
+      - location: /documentation:actions:conditiontrees
+        redirect: https://github.com/DMDirc/Meta/wiki/actions-condition-trees
+      - location: /documentation:actions:stringconditions
+        redirect: https://github.com/DMDirc/Meta/wiki/actions-custom-string-conditions
+      - location: /documentation:advanced:advanced
+        redirect: https://github.com/DMDirc/Meta/wiki/howto
+      - location: /documentation:advanced:clientssl
+        redirect: https://github.com/DMDirc/Meta/wiki/howto-client-ssl-certificates
+      - location: /documentation:advanced:notifications
+        redirect: https://github.com/DMDirc/Meta/wiki/notifications
+      - location: /documentation:advanced:proxy
+        redirect: https://github.com/DMDirc/Meta/wiki/howto-socks-proxy
+      - location: /documentation:changelogs:changelogs
+        redirect: https://github.com/DMDirc/DMDirc/releases
+      - location: /documentation:changelogs:0.2
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.2
+      - location: /documentation:changelogs:0.3
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.3
+      - location: /documentation:changelogs:0.4
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.4
+      - location: /documentation:changelogs:0.5
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.5
+      - location: /documentation:changelogs:0.5.1
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.5.1
+      - location: /documentation:changelogs:0.5.5
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.5.5
+      - location: /documentation:changelogs:0.6
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.6
+      - location: /documentation:changelogs:0.6.3
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.6.3
+      - location: /documentation:changelogs:0.6.3m1
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.6.3m1
+      - location: /documentation:changelogs:0.6.3m2
+        redirect: https://github.com/DMDirc/DMDirc/releases/tag/0.6.3m2
+      - location: /documentation:howto:howto
+        redirect: https://github.com/DMDirc/Meta/wiki/howto
+      - location: /documentation:howto:altnicknames
+        redirect: https://github.com/DMDirc/Meta/wiki/howto-configure-alternative-nicknames
+      - location: /documentation:howto:autoconnect
+        redirect: https://github.com/DMDirc/Meta/wiki/howto-automatically-connect-to-a-server
+      - location: /documentation:howto:autojoinchannels
+        redirect: https://github.com/DMDirc/Meta/wiki/howto-automatically-join-channels
+      - location: /documentation:howto:hidejoinsandparts
+        redirect: https://github.com/DMDirc/Meta/wiki/howto-hide-joins-and-parts
+      - location: /documentation:actionshowto
+        redirect: https://github.com/DMDirc/Meta/wiki/howto
+      - location: /documentation:notificationshowto
+        redirect: https://github.com/DMDirc/Meta/wiki/howto
+      - location: /documentation:ui:controlcodes
+        redirect: https://github.com/DMDirc/Meta/wiki/ui-control-codes
+    fallback: https://github.com/DMDirc/Meta/wiki
