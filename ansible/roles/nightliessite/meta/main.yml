@@ -1,5 +1,6 @@
 ---
 dependencies:
-  - role: nginx-php-site
-    nginx_php_site_hostname: "{{ nightliessite_hostname }}"
-    nginx_php_site_user: "{{ nightliessite_user }}"
+  - role: nginx-site
+    nginx_site_hostname: "{{ nightliessite_hostname }}"
+    nginx_site_user: "{{ nightliessite_user }}"
+    nginx_site_autoindex: "on"
