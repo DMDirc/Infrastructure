@@ -1,4 +1,6 @@
 ---
 - hosts: nightlies
+  vars_files:
+    - vars/circle-private.yml
   roles:
    - nightliessite
