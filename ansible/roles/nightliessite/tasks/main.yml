@@ -1,4 +1,21 @@
 ---
+- name: Install python-dateutil
+  apt:
+    name: python-dateutil
+    state: installed
+- name: Copy nightlies script
+  template:
+    src: nightly.py.jinja
+    dest: "{{ nightliessite_root }}/nightly.py"
+    group: "{{ nightliessite_user }}"
+    owner: "{{ nightliessite_user }}"
+    mode: 0700
+- name: Create cron
+  cron:
+    user: "{{ nightliessite_user }}"
+    name: Nightly build
+    special_time: "daily"
+    job: "/home/{{ nightliessite_user }}/nightly.py >/dev/null 2>&1"
 - name: Copy the index
   copy:
     src: index.php
