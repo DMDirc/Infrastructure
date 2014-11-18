@@ -1,0 +1,28 @@
+#!/usr/bin/python
+import urllib, time, json, requests, dateutil.parser, os
+def ensurePathExists(path):
+	if not os.path.exists(path):
+		os.makedirs(path)
+api_url = "https://circleci.com/api/v1/project/DMDirc/meta/"
+artifact_path = "{{ nightliessite_root }}/www"
+circle_token = "{{ circle_meta_api_token }}"
+headers = { "Accept": "application/json" }
+ensurePathExists(artifact_path)
+json_data = requests.post(api_url + "tree/master?circle-token=" + circle_token, headers=headers).json()
+build_time_millis = json_data["previous_successful_build"]["build_time_millis"]
+wait_time = build_time_millis * 1.5
+build_num = json_data["build_num"]
+build_url =  api_url + str(build_num) + "?circle-token=" + circle_token
+status = "";
+while status != "success":
+        time.sleep(wait_time / 1000)
+        json_data = requests.get(build_url, headers=headers).json()
+        status = json_data["status"]
+build_date = str(dateutil.parser.parse(json_data["start_time"]).date())
+ensurePathExists(artifact_path + "/" + build_date)
+build_url =  api_url + str(build_num) + "/artifacts?circle-token=" + circle_token
+json_data = requests.get(build_url, headers=headers).json()
+for object in json_data:
+	artifact = object["url"]
+	file_name = artifact.split("/")[-1]
+	urllib.urlretrieve(artifact, artifact_path + "/" + build_date + "/" + file_name)
