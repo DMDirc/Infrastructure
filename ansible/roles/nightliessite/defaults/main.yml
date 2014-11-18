@@ -2,3 +2,4 @@
 nightliessite_user: sites-nightlies
 nightliessite_hostname: nightlies.dmdirc.com
 nightliessite_root: "/home/{{ nightliessite_user }}"
+nightliessite_max_nightlies: 7

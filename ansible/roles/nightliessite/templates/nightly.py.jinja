@@ -6,6 +6,7 @@ def ensurePathExists(path):
 api_url = "https://circleci.com/api/v1/project/DMDirc/meta/"
 artifact_path = "{{ nightliessite_root }}/www"
 circle_token = "{{ circle_meta_api_token }}"
+max_nightlies = {{ nightliessite_max_nightlies }}
 headers = { "Accept": "application/json" }
 ensurePathExists(artifact_path)
 json_data = requests.post(api_url + "tree/master?circle-token=" + circle_token, headers=headers).json()
@@ -26,3 +27,11 @@ for object in json_data:
 	artifact = object["url"]
 	file_name = artifact.split("/")[-1]
 	urllib.urlretrieve(artifact, artifact_path + "/" + build_date + "/" + file_name)
+list = os.listdir(artifact_path)
+dirs = []
+for file in list:
+	if os.path.isdir(os.path.join(artifact_path, file)):
+		dirs.append(file)
+dirs.sort()
+for dir in dirs[:len(dirs)-max_nightlies]:
+	shutil.rmtree(artifact_path + "/" + dir)
