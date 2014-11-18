@@ -16,7 +16,3 @@
     name: Nightly build
     special_time: "daily"
     job: "/home/{{ nightliessite_user }}/nightly.py >/dev/null 2>&1"
-- name: Copy the index
-  copy:
-    src: index.php
-    dest: "{{ nightliessite_root }}/www/index.php"
