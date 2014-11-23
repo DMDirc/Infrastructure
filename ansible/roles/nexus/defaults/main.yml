@@ -1,0 +1,4 @@
+---
+artifactory_user: artifactory
+artifactory_download_directory: /home/{{ artifactory_user }}/download
+artifactory_version: 3.4.1

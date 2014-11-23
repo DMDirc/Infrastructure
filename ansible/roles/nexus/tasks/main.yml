@@ -1,0 +1,44 @@
+---
+- name: Check dependencies
+  apt:
+    name: unzip
+    state: installed
+
+- name: Crate arfifactory group
+  group:
+   name: "{{ artifactory_user }}"
+   state: present
+
+- name: Create artifactory user
+  user:
+    name: "{{ artifactory_user }}"
+    comment: "{{ artifactory_user }} user"
+    group: "{{ artifactory_user }}"
+    home: "/home/{{ artifactory_user }}"
+
+- name: Download artifactory
+  get_url:
+    url: "http://dl.bintray.com/content/jfrog/artifactory/artifactory-{{ artifactory_version }}.zip"
+    dest: "/home/{{ artifactory_user }}"
+
+- name: Extract artifactory
+  unarchive:
+    src: "/home/{{ artifactory_user }}/artifactory-{{ artifactory_version }}.zip"
+    creates: "/home/{{ artifactory_user }}/artifactory-{{ artifactory_version }}"
+    dest: "/home/{{ artifactory_user }}"
+    group: "{{ artifactory_user }}"
+    owner: "{{ artifactory_user }}"
+    creates: /home/{{ artifactory_user }}/artifactory-{{ artifactory_version }}
+
+- name: Create artifactory service
+  command: /home/{{ artifactory_user }}/artifactory-{{ artifactory_version }}/bin/installService.sh creates=/etc/init.d/artifactory
+
+- name: Configure artifactory
+  template:
+    src: default
+    dest: /etc/opt/jfrog/artifactory/default
+
+- name: Start artifactory
+  service:
+    name: artifactory
+    state: started
