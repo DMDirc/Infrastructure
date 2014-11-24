@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+        ansible-playbook -i /opt/testinventory /opt/ansible/all.yml --vault-password-file=/opt/ansible/.vault-password
+fi
+
+if [ $# -eq 1 ]
+then
+        ansible-playbook -i /opt/testinventory /opt/ansible/$1 --vault-password-file=/opt/ansible/.vault-password
+        /opt/ansible/tests/$1
+fi

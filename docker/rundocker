@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -v $PWD:/opt/ansible -t -i greboid $1
