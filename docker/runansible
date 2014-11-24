@@ -13,6 +13,9 @@ if [ ! -f /opt/ansible/inventories/test ]; then
 fi
 if [ $# -eq 0 ]; then
         ansible-playbook -i /opt/ansible/inventories/test /opt/ansible/all.yml --vault-password-file=/opt/ansible/.vault-password
+	if [ -f /opt/ansible/tests/all.yml ]; then
+                /opt/ansible/tests/all.yml
+        fi
 fi
 if [ $# -eq 1 ]; then
         ansible-playbook -i /opt/ansible/inventories/test /opt/ansible/$1 --vault-password-file=/opt/ansible/.vault-password
