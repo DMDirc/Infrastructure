@@ -11,6 +11,5 @@ RUN apt-get update
 RUN apt-get install ansible -y
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD runansible /opt/runansible
-ADD testinventory /opt/testinventory
 WORKDIR /opt/ansible
 ENTRYPOINT ["/sbin/my_init", "--", "/opt/runansible"]
