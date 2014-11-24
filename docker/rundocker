@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -v $PWD:/opt/ansible -t -i greboid/ansibletest $1
+docker run -v $PWD:/opt/ansible -t -i dmdirc/ansibletest $1
