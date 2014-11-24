@@ -1,4 +1,5 @@
 FROM phusion/baseimage:0.9.15
+MAINTAINER Greg Holmes <docker@greboid.com>
 ENV HOME /root
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 RUN echo 8.8.8.8 > /etc/resolv.conf
