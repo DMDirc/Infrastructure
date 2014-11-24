@@ -1,0 +1,23 @@
+---
+
+machine:
+  services:
+    - docker
+  environment:
+    TERM: dumb
+
+checkout:
+  post:
+    - "if [ -e .git/shallow ]; then git fetch --unshallow; fi"
+    - git fetch --tags
+    - git submodule update --init --remote
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t dmdirc/ansibletest .
+
+test:
+  override:
+    - docker run -v $PWD/ansible:/opt/ansible dmdirc/ansibletest
+
