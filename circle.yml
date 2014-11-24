@@ -15,7 +15,7 @@ checkout:
 dependencies:
   override:
     - docker info
-    - docker build -t dmdirc/ansibletest .
+    - docker pull dmdirc/ansibletest
 
 test:
   override:
