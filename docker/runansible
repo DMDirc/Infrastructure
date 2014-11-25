@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e
+
 if [ ! -d /opt/ansible/ ]; then
 	echo "/opt/ansible needs to be mounted"
 	exit 1
