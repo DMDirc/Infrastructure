@@ -19,5 +19,5 @@ dependencies:
 
 test:
   override:
-    - docker run -v $PWD/ansible:/opt/ansible dmdirc/ansibletest
+    - docker run -v $PWD/ansible:/opt/ansible -t dmdirc/ansibletest
 
