@@ -7,5 +7,5 @@ To run playbooks:
 
 To edit encrypted vars:
 
-  ansible-vault edit --vault-password-file=.vault-password vars/circle-private.yml
+  ansible-vault edit --vault-password-file=.vault-password vars/private/circle-private.yml
 

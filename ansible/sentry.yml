@@ -2,7 +2,7 @@
 - hosts: sentry
   vars_files:
     - vars/sentry.yml
-    - vars/sentry-private.yml
+    - vars/private/sentry-private.yml
   roles:
     - sentry
     - role: nginx-upstream-site
