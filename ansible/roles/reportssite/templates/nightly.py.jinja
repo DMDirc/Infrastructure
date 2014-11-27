@@ -4,9 +4,9 @@ def ensurePathExists(path):
 	if not os.path.exists(path):
 		os.makedirs(path)
 api_url = "https://circleci.com/api/v1/project/DMDirc/meta/"
-artifact_path = "{{ nightliessite_root }}/www"
+artifact_path = "{{ reportssite_root }}/www"
 circle_token = "{{ circle_meta_api_token }}"
-max_nightlies = {{ nightliessite_max_nightlies }}
+max_nightlies = {{ reportssite_max_nightlies }}
 headers = { "Accept": "application/json", "content-type": "application/json" }
 payload = {
   "build_parameters": {
