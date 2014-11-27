@@ -8,7 +8,6 @@ RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /e
 RUN apt-get update && apt-get install -y python \
                       python-yaml \
                       python-jinja2 \
-                      software-properties-common \
                       ansible
 ADD runansible /opt/runansible
 WORKDIR /opt/ansible
