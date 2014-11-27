@@ -1,4 +1,6 @@
 ---
 - hosts: reports
+  vars_files:
+    - vars/private/circle-private.yml
   roles:
     - reportssite

@@ -6,3 +6,23 @@
     group: "{{ reportssite_user }}"
     owner: "{{ reportssite_user }}"
   tags: [sites,sites-reports]
+- name: Install python-dateutil
+  apt:
+    name: python-dateutil
+    state: installed
+  tags: [sites, sites-reports]
+- name: Reports script
+  template:
+    src: nightly.py.jinja
+    dest: "{{ reportssite_root }}/nightly.py"
+    group: "{{ reportssite_user }}"
+    owner: "{{ reportssite_user }}"
+    mode: 0700
+  tags: [sites,sites-reports]
+- name: Create cron
+  cron:
+    user: "{{ reportssite_user }}"
+    name: Nightly build
+    special_time: "daily"
+    job: "/home/{{ reportssite_user }}/nightly.py >/dev/null 2>&1"
+  tags: [sites,sites-reports]

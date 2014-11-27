@@ -7,18 +7,23 @@ api_url = "https://circleci.com/api/v1/project/DMDirc/meta/"
 artifact_path = "{{ nightliessite_root }}/www"
 circle_token = "{{ circle_meta_api_token }}"
 max_nightlies = {{ nightliessite_max_nightlies }}
-headers = { "Accept": "application/json" }
+headers = { "Accept": "application/json", "content-type": "application/json" }
+payload = {
+  "build_parameters": {
+    "BUILD_PMD": "true"
+  }
+}
 ensurePathExists(artifact_path)
-json_data = requests.post(api_url + "tree/master?circle-token=" + circle_token, headers=headers).json()
+json_data = requests.post(api_url + "tree/master?circle-token=" + circle_token, data=payload ,headers=headers).json()
 build_time_millis = json_data["previous_successful_build"]["build_time_millis"]
 wait_time = build_time_millis * 1.5
 build_num = json_data["build_num"]
 build_url =  api_url + str(build_num) + "?circle-token=" + circle_token
-lifecycle = "";
-while lifecycle != "finished":
+status = "";
+while status != "success":
         time.sleep(wait_time / 1000)
         json_data = requests.get(build_url, headers=headers).json()
-        lifecycle = json_data["lifecycle"]
+        status = json_data["status"]
 build_date = str(dateutil.parser.parse(json_data["start_time"]).date())
 ensurePathExists(artifact_path + "/" + build_date)
 build_url =  api_url + str(build_num) + "/artifacts?circle-token=" + circle_token
