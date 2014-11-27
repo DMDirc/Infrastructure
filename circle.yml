@@ -13,9 +13,13 @@ checkout:
     - git submodule update --init --remote
 
 dependencies:
+  cache_directories:
+    - ~/docker
   override:
     - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker build -t dmdirc/ansibletest docker
+    - mkdir -p ~/docker; docker save dmdirc/ansibletest > ~/docker/image.tar
 
 test:
   override:
