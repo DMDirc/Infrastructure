@@ -1,6 +1,7 @@
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.15
 MAINTAINER DMDirc <devs-public@dmdirc.com>
 ENV HOME /root
+RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 ENV TERM dumb
 RUN locale-gen en_US.UTF-8
 RUN update-locale LANG=en_US.UTF-8
