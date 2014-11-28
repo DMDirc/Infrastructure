@@ -9,6 +9,5 @@ RUN apt-get update && apt-get install -y python \
                       python-yaml \
                       python-jinja2 \
                       ansible
-ADD runansible /opt/runansible
 WORKDIR /opt/ansible
-ENTRYPOINT ["/sbin/my_init", "--", "/opt/runansible"]
+ENTRYPOINT ["/sbin/my_init", "--"]
