@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -v $PWD:/opt/ansible -v $PWD/vars/testing:/opt/ansible/vars/private -t dmdirc/ansibletest /opt/ansible/tests/runtests $1
