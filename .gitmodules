@@ -9,3 +9,4 @@
 [submodule "docker"]
 	path = docker
 	url = https://github.com/DMDirc/ansibletest.git
+        branch = master
