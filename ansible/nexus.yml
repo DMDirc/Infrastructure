@@ -1,4 +1,0 @@
----
-- hosts: nexus
-  roles:
-    - nexus

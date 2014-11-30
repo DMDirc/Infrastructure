@@ -1,7 +1,7 @@
 ---
 - include: common.yml
 - include: feedback.yml
-- include: nexus.yml
+- include: artifactory.yml
 - include: nightlies.yml
 - include: reports.yml
 - include: redirects.yml
