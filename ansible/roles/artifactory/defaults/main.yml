@@ -1,0 +1,6 @@
+---
+artifactory_user: artifactory
+artifactory_download_directory: /home/{{ artifactory_user }}/download
+artifactory_version: 3.4.1
+artifactory_port: 8081
+artifactory_hostname: artifactory.dmdirc.com

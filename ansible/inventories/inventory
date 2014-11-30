@@ -4,7 +4,7 @@ ams3-1.dmdirc.com
 ams3-1.dmdirc.com
 [reports]
 lon1-1.dmdirc.com
-[nexus]
+[artifactory]
 lon1-1.dmdirc.com
 [updater]
 ams3-1.dmdirc.com

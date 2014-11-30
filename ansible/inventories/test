@@ -4,7 +4,7 @@ localhost ansible_connection=local
 localhost ansible_connection=local
 [reports]
 localhost ansible_connection=local
-[nexus]
+[artifactory]
 localhost ansible_connection=local
 [updater]
 localhost ansible_connection=local
