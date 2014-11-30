@@ -4,3 +4,8 @@
     - vars/private/artifactory-private.yml
   roles:
     - artifactory
+    - role: nginx-upstream-site
+      nginx_upstream_site_hostname: "{{ artifactory_hostname }}"
+      nginx_upstream_site_user: artifactory
+      nginx_upstream_site_upstream: "http://127.0.0.1:{{ artifactory_port }}"
+
