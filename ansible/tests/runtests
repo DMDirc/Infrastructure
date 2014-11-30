@@ -17,7 +17,7 @@ if [ ! -f /opt/ansible/inventories/test ]; then
         echo "/opt/ansible/inventories/test must exist"
         exit 1
 fi
-#ansible-playbook -i /opt/ansible/inventories/test /opt/ansible/$TEST.yml
+ansible-playbook -i /opt/ansible/inventories/test /opt/ansible/$TEST.yml
 if [ -f /opt/ansible/tests/$TEST.sh ]; then
        	/opt/ansible/tests/$TEST.sh
 fi
