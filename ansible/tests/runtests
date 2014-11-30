@@ -1,13 +1,12 @@
 #!/bin/bash
 
+set -e
+
 if [ $# -eq 1 ]; then
 	TEST=$1;
 else
 	TEST="all";
 fi
-
-
-set -e
 
 if [ ! -d /opt/ansible/ ]; then
 	echo "/opt/ansible needs to be mounted"
