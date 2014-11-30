@@ -1,4 +1,6 @@
 ---
 - hosts: artifactory
+  vars_files:
+    - vars/private/artifactory-private.yml
   roles:
     - artifactory

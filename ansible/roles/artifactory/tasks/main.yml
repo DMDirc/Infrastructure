@@ -37,6 +37,22 @@
   template:
     src: default
     dest: /etc/opt/jfrog/artifactory/default
+    group: "{{ artifactory_user }}"
+    owner: "{{ artifactory_user }}"
+
+- name: Create application configuration
+  template:
+    src: config.xml
+    dest: /home/{{ artifactory_user }}/artifactory-{{ artifactory_version}}/etc/artifactory.config.import.xml
+    group: "{{ artifactory_user }}"
+    owner: "{{ artifactory_user }}"
+
+- name: Create security configuration
+  template:
+    src: security.xml
+    dest: /home/{{ artifactory_user }}/artifactory-{{ artifactory_version}}/etc/security.import.xml
+    group: "{{ artifactory_user }}"
+    owner: "{{ artifactory_user }}"
 
 - name: Start artifactory
   service:
