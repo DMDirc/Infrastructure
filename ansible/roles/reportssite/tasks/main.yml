@@ -26,3 +26,10 @@
     special_time: "daily"
     job: "/home/{{ reportssite_user }}/nightly.py >/dev/null 2>&1"
   tags: [sites,sites-reports]
+- name: Install python pip
+  apt:
+    name: python-pip
+    state: installed
+- name: Install pip circle client
+  pip:
+    name: circleclient
