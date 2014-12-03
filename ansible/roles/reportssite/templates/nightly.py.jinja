@@ -1,42 +1,49 @@
 #!/usr/bin/python
 import urllib, time, json, requests, dateutil.parser, os, shutil
+from circleclient import circleclient
+#Functions
 def ensurePathExists(path):
-	if not os.path.exists(path):
-		os.makedirs(path)
-api_url = "https://circleci.com/api/v1/project/DMDirc/meta/"
+        if not os.path.exists(path):
+                os.makedirs(path)
+#Variables
 artifact_path = "{{ reportssite_root }}/www"
 circle_token = "{{ circle_meta_api_token }}"
-max_nightlies = {{ reportssite_max_nightlies }}
-headers = { "Accept": "application/json", "content-type": "application/json" }
-payload = {
-  "build_parameters": {
-    "BUILD_PMD": "true"
-  }
-}
-ensurePathExists(artifact_path)
-json_data = requests.post(api_url + "tree/master?circle-token=" + circle_token, data=payload ,headers=headers).json()
+circle_username = "dmdirc"
+circle_project = "meta"
+circle_branch = "master"
+max_nightlies = 1
+#Create circle client
+client = circleclient.CircleClient(circle_token)
+#Trigger build
+json_data = client.build.trigger(circle_username, circle_project, circle_branch, BUILD_PMD='true')
+build_num = json_data["build_num"]
+json_data = client.build.status(circle_username, circle_project, build_num)
+#Get previous build time + number
 build_time_millis = json_data["previous_successful_build"]["build_time_millis"]
 wait_time = build_time_millis * 1.5
-build_num = json_data["build_num"]
-build_url =  api_url + str(build_num) + "?circle-token=" + circle_token
-status = "";
-while status != "success":
+#Wait until finished
+lifecycle = "";
+while lifecycle != "finished":
         time.sleep(wait_time / 1000)
-        json_data = requests.get(build_url, headers=headers).json()
-        status = json_data["status"]
+        json_data=client.build.status(circle_username, circle_project, build_num)
+        lifecycle = json_data["lifecycle"]
+#Get build date
 build_date = str(dateutil.parser.parse(json_data["start_time"]).date())
 ensurePathExists(artifact_path + "/" + build_date)
-build_url =  api_url + str(build_num) + "/artifacts?circle-token=" + circle_token
-json_data = requests.get(build_url, headers=headers).json()
+#Get list of artifacts
+json_data = client.build.artifacts(circle_username, circle_project, build_num)
+#Download artifacts
 for object in json_data:
-	artifact = object["url"]
-	file_name = artifact.split("/")[-1]
-	urllib.urlretrieve(artifact, artifact_path + "/" + build_date + "/" + file_name)
+        artifact = object["url"]
+        file_name = artifact.split("/")[-1]
+        urllib.urlretrieve(artifact, artifact_path + "/" + build_date + "/" + file_name)
+#Find existing nightlies
 list = os.listdir(artifact_path)
 dirs = []
 for file in list:
-	if os.path.isdir(os.path.join(artifact_path, file)):
-		dirs.append(file)
+        if os.path.isdir(os.path.join(artifact_path, file)):
+                dirs.append(file)
+#Delete old nightlies
 dirs.sort()
 for dir in dirs[:len(dirs)-max_nightlies]:
-	shutil.rmtree(artifact_path + "/" + dir)
+        shutil.rmtree(artifact_path + "/" + dir)
