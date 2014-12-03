@@ -1,37 +1,57 @@
 #!/usr/bin/python
-import urllib, time, json, requests, dateutil.parser, os, shutil
+
+import urllib
+import time
+import requests
+import dateutil.parser
+import os
+import shutil
+
+
 def ensurePathExists(path):
-	if not os.path.exists(path):
-		os.makedirs(path)
+    if not os.path.exists(path):
+        os.makedirs(path)
+
 api_url = "https://circleci.com/api/v1/project/DMDirc/meta/"
 artifact_path = "{{ nightliessite_root }}/www"
 circle_token = "{{ circle_meta_api_token }}"
 max_nightlies = {{ nightliessite_max_nightlies }}
-headers = { "Accept": "application/json" }
+headers = {"Accept": "application/json"}
 ensurePathExists(artifact_path)
-json_data = requests.post(api_url + "tree/master?circle-token=" + circle_token, headers=headers).json()
+
+json_data = requests.post(api_url + "tree/master?circle-token=" + circle_token,
+                          headers=headers).json()
+
 build_time_millis = json_data["previous_successful_build"]["build_time_millis"]
 wait_time = build_time_millis * 1.5
 build_num = json_data["build_num"]
-build_url =  api_url + str(build_num) + "?circle-token=" + circle_token
-lifecycle = "";
+build_url = api_url + str(build_num) + "?circle-token=" + circle_token
+
+lifecycle = ""
 while lifecycle != "finished":
-        time.sleep(wait_time / 1000)
-        json_data = requests.get(build_url, headers=headers).json()
-        lifecycle = json_data["lifecycle"]
+    time.sleep(wait_time / 1000)
+    json_data = requests.get(build_url, headers=headers).json()
+    lifecycle = json_data["lifecycle"]
+
 build_date = str(dateutil.parser.parse(json_data["start_time"]).date())
 ensurePathExists(artifact_path + "/" + build_date)
-build_url =  api_url + str(build_num) + "/artifacts?circle-token=" + circle_token
+
+build_url = "%s%s/artifacts?circle-token=%s" % (api_url, str(build_num),
+                                                circle_token)
 json_data = requests.get(build_url, headers=headers).json()
 for object in json_data:
-	artifact = object["url"]
-	file_name = artifact.split("/")[-1]
-	urllib.urlretrieve(artifact, artifact_path + "/" + build_date + "/" + file_name)
+    artifact = object["url"]
+    file_name = artifact.split("/")[-1]
+    urllib.urlretrieve(artifact, "%s/%s/%s" % (artifact_path, build_date,
+                                               file_name))
+
 list = os.listdir(artifact_path)
 dirs = []
 for file in list:
-	if os.path.isdir(os.path.join(artifact_path, file)):
-		dirs.append(file)
+    if os.path.isdir(os.path.join(artifact_path, file)):
+        dirs.append(file)
+
 dirs.sort()
+
 for dir in dirs[:len(dirs)-max_nightlies]:
-	shutil.rmtree(artifact_path + "/" + dir)
+    shutil.rmtree(artifact_path + "/" + dir)
