@@ -33,6 +33,12 @@
 - name: Create artifactory service
   command: /home/{{ artifactory_user }}/artifactory-{{ artifactory_version }}/bin/installService.sh creates=/etc/init.d/artifactory
 
+- name: Increase initial wait time for service
+  replace:
+   dest: /etc/init.d/artifactory
+   regexp: while \[ \$SHUTDOWN_PORT -eq 0 \] && \[ \$nbSeconds -lt 60 \]; do
+   replace: while [ $SHUTDOWN_PORT -eq 0 ] && \[ $nbSeconds -lt 90 ]; do
+
 - name: Configure artifactory
   template:
     src: default
